@@ -8,7 +8,13 @@ RUN apt-get update && apt-get install -y build-essential \
     python \
     python-dev \
     python-pip \
-    unzip
+    python-h5py \
+    unzip \
+    libblas3 \
+    liblapack3 \
+    liblapack-dev \
+    libblas-dev \
+    gfortran
 
 # set current working directory
 WORKDIR /server
@@ -17,6 +23,7 @@ WORKDIR /server
 COPY . /server
 
 # install prebuild tensorflow image
+RUN pip install --upgrade pip
 RUN pip install wheels/tensorflow-1.12.0-cp27-none-linux_armv7l.whl
 
 # install dependencies
