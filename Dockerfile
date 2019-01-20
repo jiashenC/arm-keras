@@ -23,11 +23,19 @@ WORKDIR /server
 COPY . /server
 
 # install prebuild tensorflow image
-RUN pip install --upgrade pip
 RUN pip install wheels/tensorflow-1.12.0-cp27-none-linux_armv7l.whl
 
-# install dependencies
-RUN pip install -r requirements.txt 
+# install keras dependencies
+RUN pip install keras
+RUN pip install numpy
+
+# install avro
+RUN pip install avro
+
+# install pillow and its dependencies
+RUN apt-get install -y libjpeg \
+    zlib
+RUN pip install pillow
 
 # run test sample
 CMD ["python", "resnet50.py"]
