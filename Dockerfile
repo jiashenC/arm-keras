@@ -33,8 +33,7 @@ RUN pip install numpy
 RUN pip install avro
 
 # install pillow and its dependencies
-RUN apt-get install -y libjpeg \
-    zlib
+RUN apt-get install -y python-pil
 RUN pip install pillow
 
 # run test sample

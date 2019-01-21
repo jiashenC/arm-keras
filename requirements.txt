@@ -1,4 +1,0 @@
-keras
-avro
-numpy
-pillow
